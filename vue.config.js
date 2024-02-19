@@ -1,4 +1,4 @@
-const defaultDocumentTitle = '新能源发电功率人工智能预测' //默认html页面 title 值
+const defaultDocumentTitle = '预测算法集成系统' //默认html页面 title 值
 
 // vue.config.js
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
 	devServer: {
 		proxy: {
 			'/api': {
-				target: 'http://10.13.64.54:8000/',
+				target: 'http://10.13.65.187:8000/',
 				// pathRewrite: {
 				// 	'^/api': 'api'
 				// }

@@ -5,15 +5,8 @@
         <img width="100%" height="90%" src="../../assets/img/ch/顶部背景_new.png" alt="">
         <img style="position: absolute;left: 5%;top: 29%;" width="90%" height="25%" src="../../assets/img/ch/测试.webp"
           alt="">
-        <!-- <div class="main_g" style="margin-top: -6px;">
-          <img width="20%" height="20%" src="../../assets/img/home/g.png" alt="">
-        </div> -->
-        <!-- <div style="color: rgb(226, 236, 255);font-size: 1.5vw;font-weight: bold;position: absolute;top: 30%;left: 4%;">
-          新能源发电功率数据管理
-        </div> -->
         <div class="alltitle">
-          <!-- 新能源发电功率智能化预测 -->
-          新能源发电功率人工智能预测
+          预 测 算 法 集 成 系 统
         </div>
         <div class="right">
           <div v-for="(item, index) in tabList" :key="index" class="tabs">
@@ -37,7 +30,7 @@
             <template slot="imports">
               <div style="display: flex;">
                 <el-upload ref="upload" style="margin-left: 26%;margin-top: 10%;" class="upload-demo" :drag="true" submit
-                  action="#" accept=".xlsx,.xls" limit="1" :multiple="true" :before-remove="beforeRemove"
+                  action="#" accept=".xlsx,.xls" :limit="parseInt('1')" :multiple="true" :before-remove="beforeRemove"
                   :auto-upload="false" :on-exceed="handleExceed" :file-list="fileList" :on-change="handleChange">
                   <i class="el-icon-upload"></i>
                   <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em>
@@ -121,7 +114,8 @@ export default {
           show: false,
           type: 'itermStylely',
           class: 'animated fadeIn',
-        }, {
+        },
+        {
           title: '智能建模',
           show: false,
           type: 'itermStylech',
@@ -144,7 +138,9 @@ export default {
       flag: 2,
       fileList: [],
       switchIndex: '',
-      switchData: ''
+      switchData: '',
+      formFlag: '',
+      formNumber: 1,
     }
   },
   created() {
@@ -258,24 +254,30 @@ export default {
         file: this.upfilelist,
         type: this.radio1,
       }
-      util.postFormData('/api/get_file', file)
-        .then(response => {
-          // 处理POST请求的响应
-          if (response && response.code === 200) {
-            // 请求成功的处理逻辑
-            console.log(response, '上传成功');
-            this.$message.success('上传成功')
-            // this.$refs.upload.submit();
-          } else {
-            // 请求失败的处理逻辑
-            this.$message.error('服务器错误')
-          }
-        })
-        .catch(error => {
-          // 处理POST请求的错误
-          this.$message.error('POST请求错误')
-          console.error('POST请求错误', error);
-        });
+      if (this.formFlag || this.formNumber === 1) {
+        util.postFormData('/api/get_file', file)
+          .then(response => {
+            // 处理POST请求的响应
+            if (response && response.code === 200) {
+              // 请求成功的处理逻辑
+              this.formFlag = response.code
+              console.log(response, '上传成功');
+              this.$message.success('上传成功')
+              // this.$refs.upload.submit();
+            } else {
+              // 请求失败的处理逻辑
+              this.$message.error('服务器错误')
+            }
+          })
+          .catch(error => {
+            // 处理POST请求的错误
+            this.$message.error('POST请求错误')
+            console.error('POST请求错误', error);
+          });
+      } else {
+        this.$message.warning('数据处理中，请勿多次提交')
+      }
+      this.formNumber += 1
     },
     // 导出按钮
     exportbg() {
@@ -538,7 +540,7 @@ export default {
   font-weight: bold;
   position: absolute;
   top: 13%;
-  left: 38%;
+  left: 40.5%;
   -webkit-text-stroke: 1px #413c47;
   -webkit-text-fill-color: #fff;
   animation: shine 2.4s infinite;

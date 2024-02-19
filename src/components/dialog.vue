@@ -59,7 +59,10 @@ export default {
   border: 3px solid #4187B3;
   border-radius: 6px;
   padding: 0px 20px;
-  animation: moveDown 0.5s forwards; /* 添加动画效果 */ 
+  margin-top: 3%;
+  margin-left: 1%;
+  animation: moveDown 0.5s forwards;
+  /* 添加动画效果 */
 
   .dialog_title {
     margin: 20px 0px;
@@ -83,12 +86,16 @@ export default {
     bottom: 20px;
   }
 }
+
 @keyframes moveDown {
   0% {
-    transform: translateY(-100%); /* 初始位置在上方，向上偏移 100% */
+    transform: translateY(-100%);
+    /* 初始位置在上方，向上偏移 100% */
   }
+
   100% {
-    transform: translateY(0); /* 最终位置在原始位置，不再偏移 */
+    transform: translateY(0);
+    /* 最终位置在原始位置，不再偏移 */
   }
 }
 </style>

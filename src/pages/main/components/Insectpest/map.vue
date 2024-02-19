@@ -17,7 +17,7 @@
         <i class="el-icon-upload2"></i>
       </div> -->
     </div>
-    <pointInformation ref="changePoint" :pointInfo="pointInfo" @updatePoint="updatePoint" />
+    <pointInformation ref="changePoint" :openPonit="openPonit" :pointInfo="pointInfo" @updatePoint="updatePoint" />
   </div>
 </template>
 
@@ -121,7 +121,7 @@ export default {
             // 图形上的地图区域
             normal: {
               borderColor: "#5EC2F3", //图形的描边颜色
-              areaColor: 'rgba(0,0,0,0)', //地图区域的颜色。
+              // areaColor: 'rgba(0,0,0,0)', //地图区域的颜色。
               borderWidth: 1.2,
               areaColor: {
                 type: "pattern",
@@ -561,7 +561,7 @@ export default {
 
 <style lang="scss" scoped>
 .map {
-  background-size: 100% 72%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-image: url('../../../../assets/img/map/mapbg.png');
 
@@ -592,6 +592,11 @@ export default {
     right: 0;
     display: flex;
     align-items: flex-end;
+  }
+
+  .chart-container {
+    height: 58.5vh;
+    overflow: auto;
   }
 
   .map_name_topleft {

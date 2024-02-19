@@ -35,7 +35,7 @@
           <div class="bot" style="height: 48%;">
             <chart2 />
           </div>
-          <!-- <div class="bot">
+          <!-- <div class="bot" style="height: 48%;">
             <chart3 />
           </div> -->
         </div>

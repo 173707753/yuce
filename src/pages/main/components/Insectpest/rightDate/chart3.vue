@@ -1,7 +1,9 @@
 <template>
     <div v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.6)" class="top" @mouseenter="showPopup"
         @mouseleave="onBotMouseLeave">
-        <div class="st_titles">GA数据</div>
+        <div class="st_titles">
+            ELM模型发电功率预测
+        </div>
         <div class="chart-container">
             <!-- 折线图容器 -->
             <div id="chart3" class="chart">
@@ -139,7 +141,7 @@ export default {
         //鼠标移入移出
         showPopup() {
             this.isMouseOverBot = true;
-            this.allData[0].name = 'GA数据'
+            this.allData[0].name = 'ELM模型发电功率预测'
         },
         hidePopup() {
             this.isMouseOverBot = false;
