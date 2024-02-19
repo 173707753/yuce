@@ -6,7 +6,7 @@
         <img style="position: absolute;left: 5%;top: 29%;" width="90%" height="25%" src="../../assets/img/ch/测试.webp"
           alt="">
         <div class="alltitle">
-          预 测 算 法 集 成 系 统
+          预 测 算 法 集 成 系 统 
         </div>
         <div class="right">
           <div v-for="(item, index) in tabList" :key="index" class="tabs">
